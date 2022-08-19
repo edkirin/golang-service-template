@@ -31,6 +31,9 @@ type configStruct struct {
 	} `yaml:"application"`
 }
 
+const CONFIG_FILE = "conf/service.yaml"
+const ENV_PREFIX = "MYAPP"
+
 var Config configStruct
 var log *logrus.Logger
 
@@ -54,14 +57,14 @@ func readFile(cfgFile string, cfg *configStruct) {
 }
 
 func readEnv(cfg *configStruct) {
-	err := envconfig.Process("", cfg)
+	err := envconfig.Process(ENV_PREFIX, cfg)
 	if err != nil {
 		processError(err)
 	}
 }
 
-func InitConfig(configFile string, logger *logrus.Logger) {
+func InitConfig(logger *logrus.Logger) {
 	log = logger
-	readFile(configFile, &Config)
+	readFile(CONFIG_FILE, &Config)
 	readEnv(&Config)
 }

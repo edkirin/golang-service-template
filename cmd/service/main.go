@@ -9,8 +9,6 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
-const CONFIG_FILE = "conf/service.yaml"
-
 var log = logrus.New()
 
 func initLogger() {
@@ -38,7 +36,7 @@ func initLogger() {
 }
 
 func main() {
-	cfg.InitConfig(CONFIG_FILE, log)
+	cfg.InitConfig(log)
 	initLogger()
 	controller.Serve(log)
 }
