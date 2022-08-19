@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"golang-service-template/pkg/cfg"
-	"golang-service-template/pkg/dto"
+	"golang-service-template/pkg/controller"
 	"os"
 	"path/filepath"
 
@@ -38,20 +37,8 @@ func initLogger() {
 	}
 }
 
-func initComponents() {
+func main() {
 	cfg.InitConfig(CONFIG_FILE, log)
 	initLogger()
-}
-
-func main() {
-	s := dto.MachineExternalId{
-		MachineId:  12345,
-		ExternalId: "Some external id",
-	}
-
-	initComponents()
-	fmt.Println(cfg.Config)
-
-	println("Hello world")
-	fmt.Println(s)
+	controller.Serve(log)
 }
