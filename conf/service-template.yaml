@@ -1,0 +1,21 @@
+site:
+  url: "http://localhost:3000"
+
+# Server configurations
+server:
+  host: "localhost"
+  port: 5000
+  name: "http://localhost:5000"
+
+# Database credentials
+database:
+  host: "localhost"
+  port: 5432
+  name: "db-name"
+  user: "db-user"
+  pass: "db-pass"
+
+application:
+  logPath: "/var/log/my-service"  # null to disable logging to file
+  debugSQL: true
+  isProduction: false
