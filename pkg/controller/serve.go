@@ -57,6 +57,7 @@ func initRouter() *gin.Engine {
 	router.Static("/data", "./data")
 
 	router.GET("/ping", handlePing)
+	router.GET("/test-db", handleTestDb)
 	return router
 }
 

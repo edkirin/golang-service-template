@@ -3,6 +3,7 @@ package main
 import (
 	"golang-service-template/pkg/cfg"
 	"golang-service-template/pkg/controller"
+	"golang-service-template/pkg/db"
 	"os"
 	"path/filepath"
 
@@ -38,5 +39,6 @@ func initLogger() {
 func main() {
 	cfg.InitConfig(log)
 	initLogger()
+	db.InitDB(log)
 	controller.Serve(log)
 }
