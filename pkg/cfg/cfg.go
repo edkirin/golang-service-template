@@ -35,9 +35,9 @@ const CONFIG_FILE = "conf/service.yaml"
 const ENV_PREFIX = "MYAPP"
 
 var Config configStruct
-var log *logrus.Logger
 
 func processError(err error) {
+	var log = logrus.New()
 	log.Error("Config file error: " + err.Error())
 	os.Exit(2)
 }
@@ -63,8 +63,7 @@ func readEnv(cfg *configStruct) {
 	}
 }
 
-func InitConfig(logger *logrus.Logger) {
-	log = logger
+func Init() {
 	readFile(CONFIG_FILE, &Config)
 	readEnv(&Config)
 }
