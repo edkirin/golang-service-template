@@ -2,6 +2,7 @@ package controller
 
 import (
 	"golang-service-template/pkg/cfg"
+	"golang-service-template/pkg/logging"
 	"net/http"
 	"strings"
 
@@ -60,11 +61,10 @@ func initRouter() *gin.Engine {
 	return router
 }
 
-func Serve(logger *logrus.Logger) {
-	log = logger
+func Serve() {
 	serverAddr := strings.Join([]string{cfg.Config.Server.Host, cfg.Config.Server.Port}, ":")
 	router := initRouter()
 
-	log.Info(strings.Join([]string{"Application started on ", serverAddr}, ""))
+	logging.Log.Info(strings.Join([]string{"Application started on ", serverAddr}, ""))
 	router.Run(serverAddr)
 }
